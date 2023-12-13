@@ -43,8 +43,9 @@ window.addEventListener('load', (event) => {
 
   // Add all the divs to the HTML
   document.querySelector('#memory-board').innerHTML = html;
-  const pairsClicked = document.querySelector("#pairs-clicked"); // Added #
-  const pairsGuessed = document.querySelector("#pairs-guessed"); // Added #
+  const cardsClicked = document.querySelector("#cards-clicked"); 
+ 
+  const pairsGuessed = document.querySelector("#pairs-guessed"); 
 
   // Bind the click event of each element to a function
   document.querySelectorAll('.card').forEach((card) => {
@@ -55,8 +56,9 @@ window.addEventListener('load', (event) => {
 
       card.classList.add("turned");
       memoryGame.pickedCards.push(card);
-      memoryGame.pairsClicked++;
-      pairsClicked.innerHTML = memoryGame.pairsClicked;
+      memoryGame.cardsClicked++;
+     cardsClicked.innerHTML = memoryGame.cardsClicked;
+      console.log("I just clicked " + cardsClicked);
 
       if (memoryGame.pickedCards.length === 2) {
         isProcessing = true;
@@ -72,9 +74,9 @@ window.addEventListener('load', (event) => {
           if (finish) {
             setTimeout(() => {
               window.alert("You won!");
-              memoryGame.pairsClicked = 0;
+              memoryGame.cardssClicked = 0;
               memoryGame.pairsGuessed = 0;
-              pairsClicked.innerHTML = memoryGame.pairsClicked;
+              cardsClicked.innerHTML = memoryGame.cardsClicked;
               pairsGuessed.innerHTML = memoryGame.pairsGuessed;
 
               document.querySelectorAll(".card").forEach((card) => {
